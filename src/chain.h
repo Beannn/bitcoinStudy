@@ -174,7 +174,7 @@ enum BlockStatus: uint32_t {
  * genesis block at the root, with each block potentially having multiple
  * candidates to be the next block. A blockindex may have multiple pprev pointing
  * to it, but at most one of them can be part of the currently active branch.
- */
+ */// 区块链是一个基于树形的数据结构，这个结构开始与创世块作为树根，每一个区块潜在的有多个候选的子块， ？？/
 class CBlockIndex
 {
 public:

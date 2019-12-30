@@ -13,9 +13,14 @@
 namespace {
 
 /** A class that deserializes a single CTransaction one time. */
+// 单交易的反序列化
 class TxInputStream
 {
 public:
+// 传入的类型，指的什么类型
+// 版本，什么版本
+// 数据字符串
+// 剩余的长度
     TxInputStream(int nTypeIn, int nVersionIn, const unsigned char *txTo, size_t txToLen) :
     m_type(nTypeIn),
     m_version(nVersionIn),
@@ -23,6 +28,7 @@ public:
     m_remaining(txToLen)
     {}
 
+// 交易流及其长度
     void read(char* pch, size_t nSize)
     {
         if (nSize > m_remaining)
@@ -33,7 +39,7 @@ public:
 
         if (m_data == nullptr)
             throw std::ios_base::failure(std::string(__func__) + ": bad source buffer");
-
+        // 内存拷贝m_data-> pch
         memcpy(pch, m_data, nSize);
         m_remaining -= nSize;
         m_data += nSize;
@@ -76,6 +82,15 @@ static bool verify_flags(unsigned int flags)
     return (flags & ~(bitcoinconsensus_SCRIPT_FLAGS_VERIFY_ALL)) == 0;
 }
 
+// 验证脚本
+// 脚本公钥
+// 脚本公钥长度
+// 金额
+// 交易串
+// 交易串长度
+// 输入？
+// 标识？？
+// 错误
 static int verify_script(const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen, CAmount amount,
                                     const unsigned char *txTo        , unsigned int txToLen,
                                     unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err)

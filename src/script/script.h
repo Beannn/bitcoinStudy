@@ -19,22 +19,22 @@
 #include <string>
 #include <vector>
 
-// Maximum number of bytes pushable to the stack
+// Maximum number of bytes pushable to the stack   推入栈的最大字节数
 static const unsigned int MAX_SCRIPT_ELEMENT_SIZE = 520;
 
-// Maximum number of non-push operations per script
+// Maximum number of non-push operations per script   每个脚本非推入操作的最大个数
 static const int MAX_OPS_PER_SCRIPT = 201;
 
-// Maximum number of public keys per multisig
+// Maximum number of public keys per multisig  每个多签名最多的公钥数
 static const int MAX_PUBKEYS_PER_MULTISIG = 20;
 
-// Maximum script length in bytes
+// Maximum script length in bytes  最大的脚本长度 总字节数
 static const int MAX_SCRIPT_SIZE = 10000;
 
-// Maximum number of values on script interpreter stack
+// Maximum number of values on script interpreter stack  脚本解析栈最大的包含数值的数量
 static const int MAX_STACK_SIZE = 1000;
 
-// Threshold for nLockTime: below this value it is interpreted as block number,
+// Threshold for nLockTime: below this value it is interpreted as block number,   
 // otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
